@@ -110,6 +110,7 @@ def get_key_ideas(transcript_text, api_key, prompt):
     prompt = prompt.replace("{transcript}", transcript_text)
     try:
         response = model.generate_content(prompt)
+        st.write(response)
         result = response.candidates[0].content.parts[0].text
         print(result)
         match = re.search(r'<markdown>(.*?)</markdown>', result, re.IGNORECASE | re.DOTALL)
